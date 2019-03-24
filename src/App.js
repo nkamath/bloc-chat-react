@@ -4,6 +4,10 @@ import * as firebase from 'firebase';
 import Sidebar from './components/Sidebar';
 import ChatBox from './components/ChatBox';
 
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 
   // Initialize Firebase
   var config = {
@@ -22,10 +26,16 @@ import ChatBox from './components/ChatBox';
 class App extends Component {
   render() {
     return (
-      <div>
-        <Sidebar firebase = {firebase} />
-        <ChatBox firebase = {firebase} />
-      </div>
+      <Container>
+        <Row>
+          <Col md="4" className = "sidebar">
+            <Sidebar firebase = {firebase} />
+          </Col>
+          <Col md>
+            <ChatBox firebase = {firebase} />
+          </Col>
+        </Row>
+      </Container>
 
     );
   }

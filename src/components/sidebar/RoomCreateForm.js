@@ -1,5 +1,8 @@
 import React from 'react';
-import Button from '../common/Button.js';
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+
+import './Sidebar.css'
 
 class RoomCreateForm extends React.Component {
 
@@ -11,24 +14,28 @@ class RoomCreateForm extends React.Component {
 
     return (
       <div>
-      <form>
-        <fieldset>
-          <legend className = "mdl-textfield">Enter a room name</legend>
-          <div>
-            <input className = "mdl-textfield__input" type="text" value={this.props.newRoomName} onChange={this.props.handleTextChange}/>
-          </div>
-          <Button onClick={this.props.onClose}>
-            Close
-          </Button>
+      <Form>
+        <Form.Control
+          className = "sidebar-input"
+          type="text"
+          placeholder="Enter a room name"
+          value={this.props.newRoomName}
+          onChange={this.props.handleTextChange}/>
 
           <Button
+          className ="sidebar-button"
+          variant="outline-secondary"
+          onClick={this.props.onClose}>
+            Close
+          </Button>
+          <Button
+            className ="sidebar-button"
+            variant="outline-primary"
             onClick={this.props.onSubmit}
             disabled={!this.props.newRoomName}>
             Submit
           </Button>
-
-        </fieldset>
-      </form>
+      </Form>
 
       </div>
     );

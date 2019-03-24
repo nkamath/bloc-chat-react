@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import RoomCreateForm from './RoomCreateForm';
-import Button from '../common/Button.js';
+import Button from 'react-bootstrap/Button'
+
+import './Sidebar.css'
 
 class RoomCreate extends Component {
   constructor(props) {
@@ -49,7 +51,10 @@ handleTextChange(event) {
     return(
       <div>
         <Button
-          onClick = {() => this.showRoomCreateForm()}> Create Room
+          className ="sidebar-button"
+          variant="outline-primary"
+          onClick = {() => this.showRoomCreateForm()}>
+          Create Room
         </Button>
         <RoomCreateForm
           showForm={this.state.isFormOpen}
