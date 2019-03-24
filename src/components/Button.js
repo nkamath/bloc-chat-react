@@ -9,7 +9,7 @@ class Button extends Component {
   render() {
     return(
       <button
-        className="mdl-button mdl-js-button mdl-js-ripple-effect roomCreate"
+        className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
         onClick = {this.props.onClick}
         disabled = {this.props.disabled}>
         {this.props.children}
