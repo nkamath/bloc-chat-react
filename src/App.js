@@ -24,15 +24,34 @@ import Col from 'react-bootstrap/Col'
 
 
 class App extends Component {
+constructor(props) {
+  super(props);
+
+  this.state = {
+    activeRoom: {}
+  };
+}
+
+
+handleRoomClick(room) {
+  this.setState({ activeRoom: room });
+}
+
+
   render() {
     return (
       <Container>
         <Row>
           <Col md="4" className = "sidebar">
-            <Sidebar firebase = {firebase} />
+            <Sidebar
+              firebase = {firebase}
+              activeRoom={this.state.activeRoom}
+              handleRoomClick={this.handleRoomClick.bind(this)} />
           </Col>
           <Col md>
-            <ChatBox firebase = {firebase} />
+            <ChatBox
+              firebase = {firebase}
+              activeRoom={this.state.activeRoom} />
           </Col>
         </Row>
       </Container>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import "./Sidebar.css"
 
 class RoomList extends Component {
   constructor(props) {
@@ -28,7 +29,13 @@ class RoomList extends Component {
       <section className="roomList">
       {
         this.state.rooms.map((room, index) =>
-          <h3 key = {index}> {room.name} </h3> )
+          <h3
+            className={this.props.activeRoom.key===room.key ? "activeRoom" : "room"}
+            key={index}
+            onClick={()=>this.props.handleRoomClick(room)}
+            >
+            {room.name}
+          </h3> )
       }
       </section>
     )
