@@ -17,6 +17,10 @@ class RoomList extends Component {
       room.key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) });
    });
+   // TODO: Check if child has been deleted
+ }
+ componentWillUnmount() {
+   // TODO: remove event handler from child_added
  }
 
   render() {

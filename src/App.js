@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
+import RoomCreate from './components/RoomCreate';
 
 
   // Initialize Firebase
@@ -24,6 +25,7 @@ class App extends Component {
       <div>
         <h1> Bloc Chat </h1>
         <RoomList firebase = {firebase} />
+        <RoomCreate firebase = {firebase} />
       </div>
     );
   }
