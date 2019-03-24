@@ -23,14 +23,14 @@ class ChatBox extends Component {
   };
 
   handleSendMessage(){
-    console.log("send message: " + this.state.messageContent);
-
       this.messagesRef.push({
         content: this.state.messageContent,
-        roomId: "1",
-        sentAt: "placeholder",
-        username: "Nritya Kamath"
+        roomId: this.props.activeRoom.key,
+        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+        username: this.props.user.displayName
       });
+
+      this.setState({messageContent: ""});
   }
 
   handleMessageContentChange(event){
@@ -73,7 +73,12 @@ class ChatBox extends Component {
               onChange={(e) => this.handleMessageContentChange(e)}
             />
             <InputGroup.Append>
-              <Button disabled = {false} onClick = {() => this.handleSendMessage()} variant="outline-primary">Send</Button>
+              <Button
+                disabled = {!this.state.messageContent ||
+                  // Check if there is no active rooms
+                  Object.getOwnPropertyNames(this.props.activeRoom).length===0}
+                onClick = {() => this.handleSendMessage()}
+                variant="outline-primary">Send</Button>
             </InputGroup.Append>
           </InputGroup>
           </Col>
