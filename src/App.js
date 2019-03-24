@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
-import RoomList from './components/RoomList';
-import RoomCreate from './components/RoomCreate';
+import Sidebar from './components/Sidebar';
+import ChatBox from './components/ChatBox';
 
 
   // Initialize Firebase
@@ -23,10 +23,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1> Bloc Chat </h1>
-        <RoomList firebase = {firebase} />
-        <RoomCreate firebase = {firebase} />
+        <Sidebar firebase = {firebase} />
+        <ChatBox firebase = {firebase} />
       </div>
+
     );
   }
 }

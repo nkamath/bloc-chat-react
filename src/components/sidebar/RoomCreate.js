@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import RoomCreateForm from './RoomCreateForm';
-import Button from './Button.js';
+import Button from '../common/Button.js';
 
 class RoomCreate extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ closeRoomCreateForm(){
 }
 
 handleFormSubmit() {
-  if(this.state.newRoomName != ""){
+  if(this.state.newRoomName !== ""){
     this.roomsRef.push({
       name: this.state.newRoomName
     });

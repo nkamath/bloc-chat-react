@@ -1,10 +1,7 @@
 import React from 'react';
-import Button from './Button.js';
+import Button from '../common/Button.js';
 
 class RoomCreateForm extends React.Component {
-  constructor(props) {
-    super(props);
-  };
 
   render() {
     // Render nothing if the "show" prop is false
