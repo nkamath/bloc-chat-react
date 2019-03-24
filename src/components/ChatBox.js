@@ -24,6 +24,13 @@ class ChatBox extends Component {
 
   handleSendMessage(){
     console.log("send message: " + this.state.messageContent);
+
+      this.messagesRef.push({
+        content: this.state.messageContent,
+        roomId: "1",
+        sentAt: "placeholder",
+        username: "Nritya Kamath"
+      });
   }
 
   handleMessageContentChange(event){
@@ -51,6 +58,7 @@ class ChatBox extends Component {
             <MessageList
               firebase={this.props.firebase}
               activeRoom={this.props.activeRoom}
+              messagesRef = {this.messagesRef}
               />
           </Col>
         </Row>
