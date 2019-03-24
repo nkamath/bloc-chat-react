@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Message from './Message.js';
 
 class MessageList extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class MessageList extends Component {
     return(
       <section className="messageList">
       {this.state.messages.filter((message) => message.roomId == this.props.activeRoom.key).map((message, index) =>
-        <p key={index}> {message.content} </p> )
+        <Message key={index} message = {message} /> )
       }
       </section>
     )

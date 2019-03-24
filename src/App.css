@@ -24,7 +24,15 @@
 }
 .sidebar{
   background-color: #e8f9f9;
+  height: 100%;
 }
+
+.testing {
+  height: 100%;
+}
+
+
+
 
 @keyframes App-logo-spin {
   from {

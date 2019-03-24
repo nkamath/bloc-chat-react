@@ -52,7 +52,9 @@ handleTextChange(event) {
       <div>
         <Button
           className ="sidebar-button"
+          id = "create-room-button"
           variant="outline-primary"
+          size="sm"
           onClick = {() => this.showRoomCreateForm()}>
           Create Room
         </Button>

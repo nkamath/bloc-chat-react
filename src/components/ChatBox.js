@@ -3,10 +3,6 @@ import MessageList from "./chatbox/MessageList.js";
 
 
 class ChatBox extends Component {
-  constructor(props) {
-    super(props);
-  };
-
   render() {
     return(
       <div>

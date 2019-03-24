@@ -18,6 +18,7 @@ class RoomCreateForm extends React.Component {
         <Form.Control
           className = "sidebar-input"
           type="text"
+          size="sm"
           placeholder="Enter a room name"
           value={this.props.newRoomName}
           onChange={this.props.handleTextChange}/>
@@ -25,12 +26,14 @@ class RoomCreateForm extends React.Component {
           <Button
           className ="sidebar-button"
           variant="outline-secondary"
+          size="sm"
           onClick={this.props.onClose}>
             Close
           </Button>
           <Button
             className ="sidebar-button"
             variant="outline-primary"
+            size="sm"
             onClick={this.props.onSubmit}
             disabled={!this.props.newRoomName}>
             Submit

@@ -1,0 +1,17 @@
+.content{
+  margin: 0;
+}
+.sentat{
+  font-size: 12px;
+  text-align: right;
+  margin: 0;
+}
+.username{
+  font-size: 12px;
+  font-style: italic;
+  margin: 0;
+}
+
+.message{
+  margin: 10px 0 0 0;
+}
