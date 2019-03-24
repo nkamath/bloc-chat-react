@@ -28,8 +28,10 @@ constructor(props) {
   super(props);
 
   this.state = {
-    activeRoom: {}
+    activeRoom: {},
+    user: null
   };
+
 }
 
 
@@ -37,21 +39,28 @@ handleRoomClick(room) {
   this.setState({ activeRoom: room });
 }
 
+setUser(user) {
+  console.log("User is: " + user);
+  this.setState({ user: user });
+
+}
 
   render() {
     return (
-      <Container>
-        <Row>
+      <Container id="app-container">
+        <Row id="app-row">
           <Col md="4" className = "sidebar">
             <Sidebar
-              firebase = {firebase}
+              firebase={firebase}
               activeRoom={this.state.activeRoom}
               handleRoomClick={this.handleRoomClick.bind(this)} />
           </Col>
           <Col md>
             <ChatBox
-              firebase = {firebase}
-              activeRoom={this.state.activeRoom} />
+              firebase={firebase}
+              activeRoom={this.state.activeRoom}
+              setUser={this.setUser.bind(this)}
+              user={this.state.user} />
           </Col>
         </Row>
       </Container>

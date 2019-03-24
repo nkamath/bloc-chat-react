@@ -13,6 +13,6 @@ code {
     monospace;
 }
 
-html, body, div{
+html, body, #root, #app-container, #app-row, .sidebar{
   height: 100%;
 }
