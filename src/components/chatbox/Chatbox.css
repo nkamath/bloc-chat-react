@@ -9,6 +9,7 @@
 .username{
   font-size: 12px;
   font-style: italic;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -16,6 +17,11 @@
   margin: 10px 0 0 0;
 }
 
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 #sign-in-button, h4 {
   float: right;
   margin: 10px;

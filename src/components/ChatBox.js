@@ -8,7 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 
-
+import './chatbox/Chatbox.css'
 
 
 class ChatBox extends Component {
@@ -23,20 +23,29 @@ class ChatBox extends Component {
   };
 
   handleSendMessage(){
-      this.messagesRef.push({
-        content: this.state.messageContent,
-        roomId: this.props.activeRoom.key,
-        sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-        username: this.props.user.displayName
-      });
-
-      this.setState({messageContent: ""});
+      if(this.state.messageContent &&
+      Object.getOwnPropertyNames(this.props.activeRoom).length!==0){
+        var displayName = this.props.user ? this.props.user.displayName : "Guest";
+        this.messagesRef.push({
+          content: this.state.messageContent,
+          roomId: this.props.activeRoom.key,
+          sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+          username:displayName
+        });
+        this.setState({messageContent: ""});
+      }
   }
 
   handleMessageContentChange(event){
     this.setState({
       messageContent: event.target.value
     });
+  }
+
+  handleKeyPress(event){
+    if(event.key == 'Enter'){
+      this.handleSendMessage();
+    }
   }
 
   render() {
@@ -62,7 +71,7 @@ class ChatBox extends Component {
               />
           </Col>
         </Row>
-        <Row>
+        <Row className = "footer">
           <Col>
           <InputGroup className="mb-3">
             <FormControl
@@ -70,6 +79,7 @@ class ChatBox extends Component {
               aria-label="Message..."
               aria-describedby="basic-addon2"
               value={this.state.messageContent}
+              onKeyPress={(e) => this.handleKeyPress(e)}
               onChange={(e) => this.handleMessageContentChange(e)}
             />
             <InputGroup.Append>

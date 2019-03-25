@@ -46,6 +46,12 @@ handleTextChange(event) {
   });
 }
 
+handleKeyPress(event) {
+  if(event.key == 'Enter'){
+    this.handleFormSubmit();
+  }
+}
+
 
   render() {
     return(
@@ -62,6 +68,7 @@ handleTextChange(event) {
           showForm={this.state.isFormOpen}
           onClose={() => this.closeRoomCreateForm()}
           onSubmit={() => this.handleFormSubmit()}
+          handleKeyPress={this.handleKeyPress.bind(this)}
           newRoomName= {this.state.newRoomName}
           handleTextChange={(e) => this.handleTextChange(e)} />
       </div>
