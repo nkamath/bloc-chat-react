@@ -8,10 +8,6 @@ import './Sidebar.css'
 class RoomCreateForm extends React.Component {
 
   render() {
-    // Render nothing if the "show" prop is false
-    if(!this.props.showForm) {
-      return null;
-    }
 
     return (
       <div>
@@ -33,13 +29,6 @@ class RoomCreateForm extends React.Component {
             onClick={this.props.onSubmit}
             disabled={!this.props.newRoomName}>
             Submit
-          </Button>
-          <Button
-            className ="sidebar-button"
-            variant="outline-secondary"
-            size="sm"
-            onClick={this.props.onClose}>
-            Close
           </Button>
       </InputGroup>
 

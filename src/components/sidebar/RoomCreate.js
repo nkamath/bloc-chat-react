@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import RoomCreateForm from './RoomCreateForm';
 import Button from 'react-bootstrap/Button'
+import Popover from 'react-bootstrap/Popover'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 import './Sidebar.css'
 
@@ -9,24 +11,12 @@ class RoomCreate extends Component {
     super(props);
 
     this.state = {
-      isFormOpen: false,
       newRoomName: ""
     };
 
     this.roomsRef = this.props.firebase.database().ref('rooms');
   };
 
-showRoomCreateForm(){
-  this.setState({
-    isFormOpen: true
-  });
-}
-
-closeRoomCreateForm(){
-  this.setState({
-    isFormOpen: false
-  });
-}
 
 handleFormSubmit() {
   if(this.state.newRoomName !== ""){
@@ -34,7 +24,6 @@ handleFormSubmit() {
       name: this.state.newRoomName
     });
     this.setState({
-      isFormOpen: false,
       newRoomName: ""
     });
   }
@@ -56,21 +45,25 @@ handleKeyPress(event) {
   render() {
     return(
       <div>
-        <Button
-          className ="sidebar-button"
-          id = "create-room-button"
-          variant="outline-primary"
-          size="sm"
-          onClick = {() => this.showRoomCreateForm()}>
-          Create Room
-        </Button>
-        <RoomCreateForm
-          showForm={this.state.isFormOpen}
-          onClose={() => this.closeRoomCreateForm()}
-          onSubmit={() => this.handleFormSubmit()}
-          handleKeyPress={this.handleKeyPress.bind(this)}
-          newRoomName= {this.state.newRoomName}
-          handleTextChange={(e) => this.handleTextChange(e)} />
+        <OverlayTrigger
+          trigger="click" rootClose
+          placement="right"
+          overlay={
+            <Popover id="popover-basic">
+              <RoomCreateForm
+                onSubmit={() => this.handleFormSubmit()}
+                handleKeyPress={this.handleKeyPress.bind(this)}
+                newRoomName= {this.state.newRoomName}
+                handleTextChange={(e) => this.handleTextChange(e)} />
+            </Popover>} >
+            <Button
+              className ="sidebar-button"
+              id = "create-room-button"
+              variant="outline-primary"
+              size="sm" >
+              Create Room
+            </Button>
+          </OverlayTrigger>
       </div>
     )
   }
